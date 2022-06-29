@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct Kirmes_AppApp: App {
+    let viewModel = KirmesViewModel()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            KirmesView(viewModel: viewModel)
         }
     }
 }

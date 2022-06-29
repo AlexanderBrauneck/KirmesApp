@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B67EA966286A0B1F00612E4D /* KirmesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67EA965286A0B1F00612E4D /* KirmesViewModel.swift */; };
+		B67EA968286C6FF100612E4D /* KirmesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67EA967286C6FF100612E4D /* KirmesModel.swift */; };
+		B67EA96A286C72E800612E4D /* KirmesItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67EA969286C72E800612E4D /* KirmesItem.swift */; };
 		B6FEE897285A2B3200DC6D96 /* Kirmes_AppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6FEE896285A2B3200DC6D96 /* Kirmes_AppApp.swift */; };
-		B6FEE899285A2B3200DC6D96 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6FEE898285A2B3200DC6D96 /* ContentView.swift */; };
+		B6FEE899285A2B3200DC6D96 /* KirmesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6FEE898285A2B3200DC6D96 /* KirmesView.swift */; };
 		B6FEE89B285A2B3300DC6D96 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6FEE89A285A2B3300DC6D96 /* Assets.xcassets */; };
 		B6FEE89E285A2B3300DC6D96 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6FEE89D285A2B3300DC6D96 /* Preview Assets.xcassets */; };
 		B6FEE8A8285A2B3300DC6D96 /* Kirmes_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6FEE8A7285A2B3300DC6D96 /* Kirmes_AppTests.swift */; };
@@ -34,9 +37,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B67EA965286A0B1F00612E4D /* KirmesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KirmesViewModel.swift; sourceTree = SOURCE_ROOT; };
+		B67EA967286C6FF100612E4D /* KirmesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KirmesModel.swift; sourceTree = "<group>"; };
+		B67EA969286C72E800612E4D /* KirmesItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KirmesItem.swift; sourceTree = "<group>"; };
 		B6FEE893285A2B3200DC6D96 /* Kirmes App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Kirmes App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6FEE896285A2B3200DC6D96 /* Kirmes_AppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kirmes_AppApp.swift; sourceTree = "<group>"; };
-		B6FEE898285A2B3200DC6D96 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		B6FEE898285A2B3200DC6D96 /* KirmesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KirmesView.swift; sourceTree = "<group>"; };
 		B6FEE89A285A2B3300DC6D96 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B6FEE89D285A2B3300DC6D96 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B6FEE8A3285A2B3300DC6D96 /* Kirmes AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Kirmes AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,8 +100,11 @@
 		B6FEE895285A2B3200DC6D96 /* Kirmes App */ = {
 			isa = PBXGroup;
 			children = (
+				B67EA965286A0B1F00612E4D /* KirmesViewModel.swift */,
+				B67EA967286C6FF100612E4D /* KirmesModel.swift */,
+				B67EA969286C72E800612E4D /* KirmesItem.swift */,
 				B6FEE896285A2B3200DC6D96 /* Kirmes_AppApp.swift */,
-				B6FEE898285A2B3200DC6D96 /* ContentView.swift */,
+				B6FEE898285A2B3200DC6D96 /* KirmesView.swift */,
 				B6FEE89A285A2B3300DC6D96 /* Assets.xcassets */,
 				B6FEE89C285A2B3300DC6D96 /* Preview Content */,
 			);
@@ -257,7 +266,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B6FEE899285A2B3200DC6D96 /* ContentView.swift in Sources */,
+				B67EA968286C6FF100612E4D /* KirmesModel.swift in Sources */,
+				B67EA96A286C72E800612E4D /* KirmesItem.swift in Sources */,
+				B6FEE899285A2B3200DC6D96 /* KirmesView.swift in Sources */,
+				B67EA966286A0B1F00612E4D /* KirmesViewModel.swift in Sources */,
 				B6FEE897285A2B3200DC6D96 /* Kirmes_AppApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -417,6 +429,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Kirmes App/Preview Content\"";
+				DEVELOPMENT_TEAM = GNAX63WC54;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -445,6 +458,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Kirmes App/Preview Content\"";
+				DEVELOPMENT_TEAM = GNAX63WC54;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

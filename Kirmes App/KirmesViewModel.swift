@@ -29,7 +29,7 @@ class KirmesViewModel: ObservableObject {
     }
     
     func abschicken() {
-        model.abschicken()
+        model.allItems = model.abschicken()
     }
     
     

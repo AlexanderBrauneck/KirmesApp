@@ -28,6 +28,8 @@ struct ItemView: View {
     let viewModel: KirmesViewModel
     let item: KirmesItem
     
+    //TODO: Buttons und Text größer und schöner / besser klickbar
+    
     var body: some View {
         GeometryReader { geometry in
             ZStack {

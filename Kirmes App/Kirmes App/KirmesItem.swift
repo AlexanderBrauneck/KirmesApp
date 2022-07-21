@@ -9,15 +9,15 @@ import Foundation
 import SwiftUI
 
 
-struct KirmesItem: Identifiable{
+struct KirmesItem: Identifiable, Codable{
     var id: Int
     var name: String
     var preis: Double
-    var farbe: Color
+    var farbe: String
     var anzahl: Int
     
     
-    init(id: Int, name: String, preis: Double, farbe: Color) {
+    init(id: Int, name: String, preis: Double, farbe: String) {
         self.id = id
         self.name = name
         self.preis = preis

@@ -25,7 +25,7 @@ struct KirmesModel {
             //var allItems =
             _ = try! JSONDecoder().decode([KirmesItem].self, from: data)
             
-            //Update UI brauch ich denk ich mal nich^^
+            //Update UI?? brauch ich denk ich mal nich^^
         }
         task.resume()
     }
@@ -36,7 +36,7 @@ struct KirmesModel {
     static var item3 = KirmesItem(id: 2, name: "Käse", preis: 9.87, farbe: "")
     static var item4 = KirmesItem(id: 3, name: "Brezel", preis: 5.64, farbe: "")
     var allItems = [item1, item2, item3, item4]
-    var newItems: Array<KirmesItem> = []
+    var itemsForReceipt: Array<KirmesItem> = []
 
     
     //plus
@@ -55,11 +55,11 @@ struct KirmesModel {
     //abschicken, TODO: Daten schreiben ins Backend
     mutating func abschicken() -> Array<KirmesItem> {
         print("Abschicken gedrückt")
-        newItems = []
+        itemsForReceipt = []
         for item in allItems {
-            newItems.append(KirmesItem(id: item.id, name: item.name, preis: item.preis, farbe: item.farbe))
+            itemsForReceipt.append(KirmesItem(id: item.id, name: item.name, preis: item.preis, farbe: item.farbe))
         }
-        return newItems
+        return itemsForReceipt
     }
     
     

@@ -20,6 +20,8 @@ struct KirmesView: View {
                 Text("Abschicken")
             }
             //TODO: Summe und overlay mit geld zurück dies das
+        }.task {
+            await viewModel.loadKirmesItems()
         }
     }
 }

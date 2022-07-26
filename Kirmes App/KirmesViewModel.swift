@@ -32,7 +32,8 @@ class KirmesViewModel: ObservableObject {
         model.allItems = model.abschicken()
     }
     
-    
-    
+    func loadKirmesItems() async {
+        await model.loadKirmesItems()
+    }
 }
 

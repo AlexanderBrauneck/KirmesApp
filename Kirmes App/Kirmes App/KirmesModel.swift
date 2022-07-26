@@ -14,28 +14,29 @@ import SwiftUI
 
 struct KirmesModel {
     
-    func loadKirmesItems() {
+    var allItems: Array<KirmesItem> = []
+    
+    mutating func loadKirmesItems() async {
         guard let url = URL(string: "https://localhost:7000/kirmes/items") else { return debugPrint("No URL found") }
-        let urlSession = URLSession.shared
-        let task = urlSession.dataTask(with: url) { (data, response, error) in
-            guard let data = data else {
-                debugPrint("Error loading \(url): \(String(describing: error))")
-                return
-            }
-            //var allItems =
-            _ = try! JSONDecoder().decode([KirmesItem].self, from: data)
+        do {
+            let (data, _) = try await URLSession.shared.data(from: url)
             
-            //Update UI?? brauch ich denk ich mal nich^^
+            if let decodedResponse = try? JSONDecoder().decode(KirmesItems.self, from: data) {
+                allItems = decodedResponse.kirmesItems
+            }
+        } catch {
+            print("Invalid data")
+            // Aktueller Stand, weil wahrscheinlich die daten im backend kein json is
         }
-        task.resume()
+        
     }
     
     // Dummy Daten, TODO: Daten aus Backend lesen
-    static var item1 = KirmesItem(id: 0, name: "Bier", preis: 12.34, farbe: "")
-    static var item2 = KirmesItem(id: 1, name: "Cola", preis: 7.89, farbe: "")
-    static var item3 = KirmesItem(id: 2, name: "Käse", preis: 9.87, farbe: "")
-    static var item4 = KirmesItem(id: 3, name: "Brezel", preis: 5.64, farbe: "")
-    var allItems = [item1, item2, item3, item4]
+//    static var item1 = KirmesItem(id: 0, name: "Bier", preis: 12.34, farbe: "")
+//    static var item2 = KirmesItem(id: 1, name: "Cola", preis: 7.89, farbe: "")
+//    static var item3 = KirmesItem(id: 2, name: "Käse", preis: 9.87, farbe: "")
+//    static var item4 = KirmesItem(id: 3, name: "Brezel", preis: 5.64, farbe: "")
+//    var allItems = [item1, item2, item3, item4]
     var itemsForReceipt: Array<KirmesItem> = []
 
     

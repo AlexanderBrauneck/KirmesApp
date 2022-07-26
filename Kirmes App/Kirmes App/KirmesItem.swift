@@ -26,3 +26,6 @@ struct KirmesItem: Identifiable, Codable{
     }
 }
 
+struct KirmesItems: Codable {
+    var kirmesItems: [KirmesItem]
+}

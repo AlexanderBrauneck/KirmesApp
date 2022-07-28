@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import Combine
 
 
 // Hier passiert die Logik also plus minus oder was?
@@ -14,22 +15,45 @@ import SwiftUI
 
 struct KirmesModel {
     
-    var allItems: Array<KirmesItem> = []
+    let url = URL(string: "http://192.168.2.113:7000/kirmes/items")
+    lazy var allItems: Array<KirmesItem> = []
+    private var cancellable = [AnyCancellable]()
     
     mutating func loadKirmesItems() async {
-        guard let url = URL(string: "https://localhost:7000/kirmes/items") else { return debugPrint("No URL found") }
-        do {
-            let (data, _) = try await URLSession.shared.data(from: url)
-            
-            if let decodedResponse = try? JSONDecoder().decode(KirmesItems.self, from: data) {
-                allItems = decodedResponse.kirmesItems
-            }
-        } catch {
-            print("Invalid data")
-            // Aktueller Stand, weil wahrscheinlich die daten im backend kein json is
-        }
-        
+        cancellable[0] = URLSession.shared.dataTaskPublisher(for: url!)
+            .subscribe(on: DispatchQueue(label: "SessionProcessingQueue"))
+            .map({
+                print("\n $0.data: \($0.data)")
+                return $0.data
+            })
+            .decode(type: KirmesItem.self, decoder: JSONDecoder())
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { (subscriberCompletion) in
+                switch subscriberCompletion {
+                case .finished:
+                    
+                    break
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }, receiveValue: { (KirmesItem) in
+                self.allItems.append(KirmesItem)
+            })
     }
+    
+        
+//        do {
+//            let (data, _) = try await URLSession.shared.data(from: url)
+//            print(data)
+//            if let decodedResponse = try? JSONDecoder().decode(KirmesItems.self, from: data) {
+//                allItems = decodedResponse.kirmesItems
+//            }
+//        } catch {
+//            print("Invalid data")
+//            // Aktueller Stand, weil wahrscheinlich die daten im backend kein json is
+//        }
+//
+//    }
     
     // Dummy Daten, TODO: Daten aus Backend lesen
 //    static var item1 = KirmesItem(id: 0, name: "Bier", preis: 12.34, farbe: "")

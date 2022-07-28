@@ -1,17 +1,18 @@
-// src/items/items.service.ts
-
 /**
  * Data Model Interfaces
  */
 
  import { BaseItem, Item } from "./item.interface";
  import { Items } from "./items.interface";
+ import * as itemsData from './items.json';
 
 /**
  * In-Memory Store
  */
 
- let items: Items = {
+ let items: Items = itemsData
+/* {
+
     1: {
       id: 1,
       name: "Bier",
@@ -37,7 +38,7 @@
         colorhex: "#A52A2A" //brown
       }
   };
-
+*/
 /**
  * Service Methods
  */
@@ -46,6 +47,7 @@
 
  export const find = async (id: number): Promise<Item> => items[id];
 
+ // in items.json speichern
  export const create = async (newItem: BaseItem): Promise<Item> => {
     const id = new Date().valueOf();
   
@@ -57,6 +59,7 @@
     return items[id];
   };
 
+  // in items.json speichern
   export const update = async (id: number,itemUpdate: BaseItem): Promise<Item | null> => {
     const item = await find(id);
   
@@ -69,6 +72,7 @@
     return items[id];
   };
 
+  // in items.json speichern
   export const remove = async (id: number): Promise<null | void> => {
     const item = await find(id);
   

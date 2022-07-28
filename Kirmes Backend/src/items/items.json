@@ -1,0 +1,30 @@
+[
+    {
+      "id" : 1,
+      "name" : "Bier",
+      "price" : 250,
+      "colorhex" : "#FF4500",
+      "comment" : "orangered"
+    },
+    {
+      "id" : 2,
+      "name" : "Cola, Limo",
+      "price" : 200,
+      "colorhex" : "#ADFF2F",
+      "comment" : "greenyellow"
+    },
+    {
+      "id" : 3,
+      "name" : "Wein",
+      "price" : 199,
+      "colorhex" : "#0000CD",
+      "comment" : "mediumblue"
+    },
+    {
+      "id" : 4,
+      "name" : "Käse",
+      "price" : 199,
+      "colorhex" : "#A52A2A",
+      "comment" : "brown"
+    }
+]

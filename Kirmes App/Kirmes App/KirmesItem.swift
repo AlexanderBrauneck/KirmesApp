@@ -2,30 +2,36 @@
 //  KirmesItem.swift
 //  Kirmes App
 //
-//  Created by Anna Reyhe on 29.06.22.
-//
 
 import Foundation
-import SwiftUI
 
+enum KirmesItemUnion: Codable {
+    case kirmesItemArray([KirmesItem])
+    case purpleKirmesItem(PurpleKirmesItem)
 
-struct KirmesItem: Identifiable, Codable{
-    var id: Int
-    var name: String
-    var preis: Double
-    var farbe: String
-    var anzahl: Int
-    
-    
-    init(id: Int, name: String, preis: Double, farbe: String) {
-        self.id = id
-        self.name = name
-        self.preis = preis
-        self.farbe = farbe
-        self.anzahl = 0
+    init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        if let x = try? container.decode([KirmesItem].self) {
+            self = .kirmesItemArray(x)
+            return
+        }
+        if let x = try? container.decode(PurpleKirmesItem.self) {
+            self = .purpleKirmesItem(x)
+            return
+        }
+        throw DecodingError.typeMismatch(KirmesItemUnion.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Wrong type for KirmesItemUnion"))
     }
 }
 
-struct KirmesItems: Codable {
+struct KirmesItem: Codable, Identifiable {
+    let id: Int
+    let name: String
+    let price: Int
+    let colorhex, comment: String
+}
+
+struct PurpleKirmesItem: Codable {
     var kirmesItems: [KirmesItem]
 }
+
+typealias KirmesItems = [KirmesItemUnion]

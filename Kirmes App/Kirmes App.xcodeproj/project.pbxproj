@@ -40,6 +40,7 @@
 		B67EA965286A0B1F00612E4D /* KirmesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KirmesViewModel.swift; sourceTree = SOURCE_ROOT; };
 		B67EA967286C6FF100612E4D /* KirmesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KirmesModel.swift; sourceTree = "<group>"; };
 		B67EA969286C72E800612E4D /* KirmesItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KirmesItem.swift; sourceTree = "<group>"; };
+		B67EA96B289EE1D000612E4D /* Kirmes-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Kirmes-App-Info.plist"; sourceTree = SOURCE_ROOT; };
 		B6FEE893285A2B3200DC6D96 /* Kirmes App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Kirmes App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6FEE896285A2B3200DC6D96 /* Kirmes_AppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kirmes_AppApp.swift; sourceTree = "<group>"; };
 		B6FEE898285A2B3200DC6D96 /* KirmesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KirmesView.swift; sourceTree = "<group>"; };
@@ -100,6 +101,7 @@
 		B6FEE895285A2B3200DC6D96 /* Kirmes App */ = {
 			isa = PBXGroup;
 			children = (
+				B67EA96B289EE1D000612E4D /* Kirmes-App-Info.plist */,
 				B67EA965286A0B1F00612E4D /* KirmesViewModel.swift */,
 				B67EA967286C6FF100612E4D /* KirmesModel.swift */,
 				B67EA969286C72E800612E4D /* KirmesItem.swift */,
@@ -432,6 +434,7 @@
 				DEVELOPMENT_TEAM = GNAX63WC54;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Kirmes-App-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -461,6 +464,7 @@
 				DEVELOPMENT_TEAM = GNAX63WC54;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Kirmes-App-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

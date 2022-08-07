@@ -2,8 +2,6 @@
 //  ContentView.swift
 //  Kirmes App
 //
-//  Created by Anna Reyhe on 15.06.22.
-//
 
 import SwiftUI
 
@@ -12,7 +10,7 @@ struct KirmesView: View {
     
     var body: some View {
         VStack {
-            ForEach(viewModel.allItems) { item in
+            ForEach(viewModel.allItems.kirmesItems) { item in
                 ItemView(viewModel: viewModel, item: item)
             }
             Spacer()
@@ -42,7 +40,7 @@ struct ItemView: View {
                     Spacer()
                     Text(item.name).font(font(in: geometry.size))
                     Spacer()
-                    Text("\(item.anzahl)")
+                    Text("item.anzahl")
                     Spacer()
                     add
                 }

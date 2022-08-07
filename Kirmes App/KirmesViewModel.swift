@@ -2,22 +2,17 @@
 //  File.swift
 //  Kirmes App
 //
-//  Created by Anna Reyhe on 27.06.22.
-//
 
 import SwiftUI
 
 
 class KirmesViewModel: ObservableObject {
-/*  Hier kommt kommunikation zwischen model und view rein
-    Ändert daten des Models
-    vllt greift das hier auf zwei models zu, eins für die logik eins für die daten
-    eig nich notwendig
-*/
+
     @Published private var model: KirmesModel = KirmesModel()
-    
-    var allItems: Array<KirmesItem> {
-        model.allItems
+    let url = URL(string: "http://192.168.0.101:7000/kirmes/items")
+
+    var allItems: PurpleKirmesItem {
+        model.itemList
     }
     
     func add(_ item: KirmesItem){
@@ -29,11 +24,24 @@ class KirmesViewModel: ObservableObject {
     }
     
     func abschicken() {
-        model.allItems = model.abschicken()
+   //     model.itemList = model.abschicken()
     }
     
     func loadKirmesItems() async {
-        await model.loadKirmesItems()
+        model.loadKirmesItems(urlToExecute: url!) { (responseDict, error) in
+            DispatchQueue.main.async { [self] in
+                if let unwrappedError = error {
+                    print(String(describing: unwrappedError))
+                }
+                model.allesVonDerUrl = responseDict[1]
+                switch model.allesVonDerUrl {
+                case .purpleKirmesItem(let purpleItem):
+                    model.itemList.kirmesItems = purpleItem.kirmesItems
+                case .kirmesItemArray(let kirmesArray):
+                    model.itemList.kirmesItems = kirmesArray
+                }
+            }
+        }
     }
 }
 

@@ -1,4 +1,5 @@
-[
+{
+  "kirmesItems" : [
     {
       "id" : 1,
       "name" : "Bier",
@@ -27,4 +28,5 @@
       "colorhex" : "#A52A2A",
       "comment" : "brown"
     }
-]
+  ]
+}

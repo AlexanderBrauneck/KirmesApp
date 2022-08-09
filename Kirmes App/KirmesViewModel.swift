@@ -11,20 +11,31 @@ class KirmesViewModel: ObservableObject {
     @Published private var model: KirmesModel = KirmesModel()
     let url = URL(string: "http://192.168.0.101:7000/kirmes/items")
 
-    var allItems: PurpleKirmesItem {
+    var allItems: FrontendKirmesItems {
         model.itemList
     }
     
-    func add(_ item: KirmesItem){
+    var summe: Int {
+        model.summe
+    }
+    
+    func add(_ item: FrontendKirmesItem){
         model.add(item)
+        model.summe = model.summeBerechnen()
+        print("SUMME: \(summe)")
+
     }
     
-    func remove(_ item: KirmesItem){
+    func remove(_ item: FrontendKirmesItem){
         model.remove(item)
+        model.summe = model.summeBerechnen()
+        print("SUMME: \(model.summe)")
     }
     
-    func abschicken() {
-   //     model.itemList = model.abschicken()
+    func zahlen() {
+        model.itemList = model.zahlen()
+        model.summe = model.summeBerechnen()
+        print("SUMME: \(model.summe)")
     }
     
     func loadKirmesItems() async {
@@ -36,9 +47,9 @@ class KirmesViewModel: ObservableObject {
                 model.allesVonDerUrl = responseDict[1]
                 switch model.allesVonDerUrl {
                 case .purpleKirmesItem(let purpleItem):
-                    model.itemList.kirmesItems = purpleItem.kirmesItems
-                case .kirmesItemArray(let kirmesArray):
-                    model.itemList.kirmesItems = kirmesArray
+                    model.itemList = model.ausBackMachFrontKirmesItems(backendKirmesItems: purpleItem)
+                case .kirmesItemArray(_):
+                    print("Error KirmesArray was found")
                 }
             }
         }

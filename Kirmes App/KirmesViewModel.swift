@@ -22,20 +22,16 @@ class KirmesViewModel: ObservableObject {
     func add(_ item: FrontendKirmesItem){
         model.add(item)
         model.summe = model.summeBerechnen()
-        print("SUMME: \(summe)")
-
     }
     
     func remove(_ item: FrontendKirmesItem){
         model.remove(item)
         model.summe = model.summeBerechnen()
-        print("SUMME: \(model.summe)")
     }
     
     func zahlen() {
         model.itemList = model.zahlen()
         model.summe = model.summeBerechnen()
-        print("SUMME: \(model.summe)")
     }
     
     func loadKirmesItems() async {
@@ -55,4 +51,3 @@ class KirmesViewModel: ObservableObject {
         }
     }
 }
-

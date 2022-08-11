@@ -10,48 +10,87 @@ import SwiftUI
 struct PopupView: View {
     @Binding var isShowing: Bool
     var viewModel: KirmesViewModel
-    @State var payed: String = ""
-    let numberformater: NumberFormatter
+    @State var payed: Int = 0
+    let numberFormatter: NumberFormatter
     
     init(isShowing: Binding<Bool>, viewModel: KirmesViewModel) {
-        numberformater = NumberFormatter()
-        numberformater.numberStyle = .currency
-        numberformater.maximumFractionDigits = 2
+        numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .currency
+        numberFormatter.currencySymbol = "€"
+        numberFormatter.maximumFractionDigits = 2
         self._isShowing = isShowing
         self.viewModel = viewModel
+        
+        
     }
         
     var body: some View {
         GeometryReader {geometry in
             ZStack {
                 Color.init(DrawingConstants.backgroundColor).ignoresSafeArea()
-                
-                CloseView(isShowing: $isShowing, payed: $payed)
+                CloseView(isShowing: $isShowing, value: $payed)
                 VStack {
+                    RoundedRectangle(cornerRadius: 20)
+                        .opacity(0)
+                        .fixedSize()
+                        .frame(
+                            minWidth: geometry.size.width * DrawingConstants.fertigButtonWidth,
+                            minHeight: geometry.size.height * DrawingConstants.fertigButtonHeight)
+
                     Text("Test oke das sieht schon ganz gut aus")
-                    TextField("0.00 €", value: $payed, formatter: numberformater)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .keyboardType(.numberPad)
-                        .font(DrawingConstants.font(
-                            size: geometry.size,
-                            fontSize: DrawingConstants.textFieldFont))
+                    CurrencyTextField(numberFormatter: numberFormatter, value: $payed, placeholder: "0.00 €")
+                        .padding(20)
+                        .overlay(RoundedRectangle(cornerRadius: 16)
+                                    .stroke(Color.gray.opacity(0.3), lineWidth: 2))
+                        .frame(height: 100)
                     Divider()
-                    Text("Was steht hier? \(payed)")
+                    Text("Rückgeld: " + String(
+                        format: "%.2f €",
+                        Float((Int(payed) - viewModel.summe)) / 100))
+                    FertigButton(isShowing: $isShowing, viewModel: viewModel, geometry: geometry)
                 }.padding()
             }
         }
     }
 }
 
+struct FertigButton: View {
+    @Binding var isShowing: Bool
+    var viewModel: KirmesViewModel
+    let geometry: GeometryProxy
+    
+    var body: some View {
+        VStack {
+            HStack {
+
+        Button(action: {
+            viewModel.zahlen()
+            isShowing = false
+        }) {
+                    ZStack {
+                        Text("Fertig").font(.largeTitle).foregroundColor(.black)
+                        RoundedRectangle(cornerRadius: DrawingConstants.fertigButtonCornerRadius)
+                            .foregroundColor(Color(DrawingConstants.fertigButtonColor).opacity(0.5))
+                            .frame(
+                                minWidth: geometry.size.width * DrawingConstants.fertigButtonWidth,
+                                minHeight: geometry.size.height * DrawingConstants.fertigButtonHeight)
+                    }.fixedSize()
+                }
+            }
+            Spacer()
+        }
+    }
+}
+
 struct CloseView: View {
     @Binding var isShowing: Bool
-    @Binding var payed: String
+    @Binding var value: Int
     
     var body: some View {
         VStack {
             HStack {
                 Spacer()
-                Button( action: { test() } ) {
+                Button( action: { isShowing = false } ) {
                     Image(systemName: "xmark")
                         .resizable()
                         .scaledToFill()
@@ -64,10 +103,9 @@ struct CloseView: View {
             Spacer()
         }
     }
-    private func test() {
-        isShowing = false
-    }
 }
+
+
 
 private struct DrawingConstants {
     static let backgroundColor: UIColor = UIColor.systemOrange.withAlphaComponent(0.1)
@@ -79,6 +117,12 @@ private struct DrawingConstants {
     
     //PopupView
     static let closeButtonSize: CGFloat = 30
+    
+    //FertigButton
+    static let fertigButtonCornerRadius: CGFloat = 15
+    static let fertigButtonColor: UIColor = .systemBlue
+    static let fertigButtonWidth: CGFloat = 0.8
+    static let fertigButtonHeight: CGFloat = 0.13
 }
 
 
@@ -115,5 +159,6 @@ struct PopupViewPreviewContainer: View {
 struct PopupViewPreview: PreviewProvider {
     static var previews: some View {
         PopupViewPreviewContainer()
+            .previewInterfaceOrientation(.portraitUpsideDown)
     }
 }

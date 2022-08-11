@@ -16,20 +16,6 @@ struct KirmesView: View {
             GeometryReader { geometry in
                 VStack {
                     VStack {
-                        //zum testen
-//                        ForEach(0..<4) { _ in
-//                            ItemView(
-//                                viewModel: viewModel,
-//                                item: FrontendKirmesItem(
-//                                    id: 1,
-//                                    name: "Hallo",
-//                                    price: 199,
-//                                    color: .systemOrange,
-//                                    anzahl: 0
-//                                )
-//                            )
-//                        }
-                        //test ende
                         ForEach(viewModel.allItems.kirmesItems) { item in
                             ItemView(viewModel: viewModel, item: item)
                         }
@@ -69,7 +55,7 @@ struct BottomBarView: View {
                         Text("Zahlen").font(DrawingConstants.font(
                             size: geometry.size,
                             fontSize: DrawingConstants.summeFontSize))
-                    }.popover(isPresented: $showingPopup){
+                    }.sheet(isPresented: $showingPopup){
                         PopupView(isShowing: $showingPopup, viewModel: viewModel)
                     }
                 }
@@ -158,7 +144,7 @@ private struct DrawingConstants {
     //ItemView
     static let itemCornerRadius: CGFloat = 15
     static let horizontalItemSpace: CGFloat = 40
-    static let plusMinusButtonSize: CGFloat = 0.4
+    static let plusMinusButtonSize: CGFloat = 0.35
     static let plusMinutButtonWidth: CGFloat = 80
 
     //PopupView

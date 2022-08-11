@@ -7,6 +7,7 @@
 import express from "express";
 import * as dotenv from "dotenv";
 import { itemsRouter } from "./items/items.router";
+import { quittungRouter } from "./quittung/quittung.router";
 
 dotenv.config();
 
@@ -30,6 +31,7 @@ dotenv.config();
 
  app.use(express.json());
  app.use("/kirmes/items", itemsRouter);
+ app.use("/kirmes/quittung", quittungRouter);
 
 /**
  * Server Activation

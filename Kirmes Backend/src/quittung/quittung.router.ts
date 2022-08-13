@@ -34,6 +34,7 @@ quittungRouter.post("/", async (req: Request, res: Response) => {
   
       const newQuittung = await QuittungService.create(quittung);
   
+
       res.status(201).json(newQuittung);
     } catch (e) {
       res.status(500).send(e.message);

@@ -26,9 +26,15 @@
       ...newQuittung,
     };
 
-    let blob = new Blob([JSON.stringify(allQuittung)], { type: 'application/json' })
+    //let blob = new Blob([JSON.stringify(allQuittung)], { type: 'application/json' })
 
-    //saveAs(blob, 'quittung.json')
+    var fs = require('fs')
+    fs.writeFileSync ("quittung.json", JSON.stringify(allQuittung), function(err) {
+      if (err) {
+        console.log("error");  
+      }
+    })
+
   
     return allQuittung[id];
   };

@@ -14,6 +14,8 @@
 		B67EA96F28A2C5DC00612E4D /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67EA96E28A2C5DC00612E4D /* PopupView.swift */; };
 		B6CCE21428A31D6B00E48F40 /* CurrencyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6CCE21328A31D6B00E48F40 /* CurrencyTextField.swift */; };
 		B6CCE21628A3D85800E48F40 /* SomeIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6CCE21528A3D85800E48F40 /* SomeIdentifiable.swift */; };
+		B6CCE21828A7F41B00E48F40 /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6CCE21728A7F41B00E48F40 /* ItemView.swift */; };
+		B6CCE21A28A81C8A00E48F40 /* DeviceRotationViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6CCE21928A81C8A00E48F40 /* DeviceRotationViewModifier.swift */; };
 		B6FEE897285A2B3200DC6D96 /* Kirmes_AppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6FEE896285A2B3200DC6D96 /* Kirmes_AppApp.swift */; };
 		B6FEE899285A2B3200DC6D96 /* KirmesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6FEE898285A2B3200DC6D96 /* KirmesView.swift */; };
 		B6FEE89B285A2B3300DC6D96 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6FEE89A285A2B3300DC6D96 /* Assets.xcassets */; };
@@ -49,6 +51,8 @@
 		B67EA96E28A2C5DC00612E4D /* PopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
 		B6CCE21328A31D6B00E48F40 /* CurrencyTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTextField.swift; sourceTree = "<group>"; };
 		B6CCE21528A3D85800E48F40 /* SomeIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SomeIdentifiable.swift; sourceTree = "<group>"; };
+		B6CCE21728A7F41B00E48F40 /* ItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
+		B6CCE21928A81C8A00E48F40 /* DeviceRotationViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRotationViewModifier.swift; sourceTree = "<group>"; };
 		B6FEE893285A2B3200DC6D96 /* Kirmes App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Kirmes App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6FEE896285A2B3200DC6D96 /* Kirmes_AppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kirmes_AppApp.swift; sourceTree = "<group>"; };
 		B6FEE898285A2B3200DC6D96 /* KirmesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KirmesView.swift; sourceTree = "<group>"; };
@@ -111,6 +115,7 @@
 			children = (
 				B67EA96B289EE1D000612E4D /* Kirmes-App-Info.plist */,
 				B67EA96E28A2C5DC00612E4D /* PopupView.swift */,
+				B6CCE21928A81C8A00E48F40 /* DeviceRotationViewModifier.swift */,
 				B6CCE21328A31D6B00E48F40 /* CurrencyTextField.swift */,
 				B6CCE21528A3D85800E48F40 /* SomeIdentifiable.swift */,
 				B67EA96C289FFF7000612E4D /* FrontendKirmesItem.swift */,
@@ -119,6 +124,7 @@
 				B67EA969286C72E800612E4D /* BackendKirmesItem.swift */,
 				B6FEE896285A2B3200DC6D96 /* Kirmes_AppApp.swift */,
 				B6FEE898285A2B3200DC6D96 /* KirmesView.swift */,
+				B6CCE21728A7F41B00E48F40 /* ItemView.swift */,
 				B6FEE89A285A2B3300DC6D96 /* Assets.xcassets */,
 				B6FEE89C285A2B3300DC6D96 /* Preview Content */,
 			);
@@ -282,8 +288,10 @@
 			files = (
 				B67EA968286C6FF100612E4D /* KirmesModel.swift in Sources */,
 				B67EA96F28A2C5DC00612E4D /* PopupView.swift in Sources */,
+				B6CCE21A28A81C8A00E48F40 /* DeviceRotationViewModifier.swift in Sources */,
 				B67EA96D289FFF7000612E4D /* FrontendKirmesItem.swift in Sources */,
 				B6CCE21628A3D85800E48F40 /* SomeIdentifiable.swift in Sources */,
+				B6CCE21828A7F41B00E48F40 /* ItemView.swift in Sources */,
 				B67EA96A286C72E800612E4D /* BackendKirmesItem.swift in Sources */,
 				B6FEE899285A2B3200DC6D96 /* KirmesView.swift in Sources */,
 				B67EA966286A0B1F00612E4D /* KirmesViewModel.swift in Sources */,

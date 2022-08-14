@@ -9,9 +9,6 @@ import Combine
 
 struct KirmesModel {
     
-//    let itemsUrl = URL(string: "http://192.168.0.101:7000/kirmes/items")
-//    let url = URL(string: "http://192.168.0.101:7000/kirmes/quittung")
-    private var cancellable = [AnyCancellable]()
     var itemList: FrontendKirmesItems = FrontendKirmesItems(kirmesItems: [])
     var allesVonDerUrl: BackendKirmesItemsEnum = .purpleKirmesItem(BackendKirmesItems(kirmesItems: []))
     var itemsForReceipt: FrontendKirmesItems = FrontendKirmesItems(kirmesItems: [])
@@ -29,7 +26,6 @@ struct KirmesModel {
                 return
             }
             do {
-                // MARK: Hier
                 let jsonResponse = try decoder.decode(EverythingFromBackendKirmesItems.self, from: unwrappedData)
                 completionHandler(jsonResponse, nil)
             } catch {
@@ -40,12 +36,10 @@ struct KirmesModel {
         dataTask.resume()
     }
     
-    //plus
     mutating func add(_ item: FrontendKirmesItem) {
         itemList.kirmesItems[item.id].anzahl += 1
     }
     
-    //minus
     mutating func remove(_ item: FrontendKirmesItem) {
         if itemList.kirmesItems[item.id].anzahl >= 1 {
             itemList.kirmesItems[item.id].anzahl -= 1

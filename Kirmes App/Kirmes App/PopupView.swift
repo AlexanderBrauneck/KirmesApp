@@ -178,7 +178,6 @@ struct PopupViewPreviewContainer: View {
     var body: some View {
         PopupView(isShowing: $isShowing, viewModel: viewModel, orientation: $orientation)
     }
-    
 }
 
 struct PopupViewPreview: PreviewProvider {

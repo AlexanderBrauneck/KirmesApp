@@ -2,30 +2,23 @@
   "kirmesItems" : [
     {
       "id" : 0,
-      "name" : "Bier",
+      "name" : "Bier, Bräu, Radler",
       "price" : 250,
       "colorhex" : "#FF4500",
       "comment" : "orangered"
     },
     {
       "id" : 1,
-      "name" : "Cola, Limo",
-      "price" : 200,
+      "name" : "Wein, Schorle, Sekt",
+      "price" : 400,
       "colorhex" : "#ADFF2F",
       "comment" : "greenyellow"
     },
     {
       "id" : 2,
-      "name" : "Wein",
-      "price" : 199,
+      "name" : "Cola, Fanta, Wasser",
+      "price" : 200,
       "colorhex" : "#0000CD",
       "comment" : "mediumblue"
-    },
-    {
-      "id" : 3,
-      "name" : "Käse",
-      "price" : 199,
-      "colorhex" : "#A52A2A",
-      "comment" : "brown"
     }  ]
 }

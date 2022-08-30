@@ -1,0 +1,24 @@
+{
+    "KirmesItems": [{
+        "id" : 0,
+        "name" : "Bier, Bräu, Radler",
+        "price" : 250,
+        "colorhex" : "#FF1EE3",
+        "anzahl" : 0
+    },
+    {
+        "id" : 1,
+        "name" : "Wein, Schorle, Sekt",
+        "price" : 400,
+        "colorhex" : "#FF7D23",
+        "anzahl" : 0
+    },
+    {
+        "id" : 2,
+        "name" : "Cola, Fanta, Wasser",
+        "price" : 200,
+        "colorhex" : "#2FBF8C",
+        "anzahl" : 0
+        }
+    ]
+}

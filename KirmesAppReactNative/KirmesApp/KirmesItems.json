@@ -8,17 +8,37 @@
     },
     {
         "id" : 1,
-        "name" : "Wein, Schorle, Sekt",
+        "name" : "Glühwein",
         "price" : 400,
         "colorhex" : "#FF7D23",
         "anzahl" : 0
     },
     {
         "id" : 2,
-        "name" : "Cola, Fanta, Wasser",
+        "name" : "Cola, Fanta, Wasser, Kinderpunsch",
         "price" : 200,
         "colorhex" : "#2FBF8C",
         "anzahl" : 0
-        }
-    ]
+    },
+    {
+        "id" : 3,
+        "name" : "Würstchen",
+        "price" : 250,
+        "colorhex" : "#D2B48C",
+        "anzahl" : 0
+    },
+    {
+        "id" : 4,
+        "name" : "Döppekuchen",
+        "price" : 500,
+        "colorhex" : "#D2B48C",
+        "anzahl" : 0
+    },
+    {
+        "id" : 5,
+        "name" : "Apfelmuß",
+        "price" : 50,
+        "colorhex" : "#D2B48C",
+        "anzahl" : 0
+    }]
 }

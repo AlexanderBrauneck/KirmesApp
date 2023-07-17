@@ -35,10 +35,10 @@ export const AppStyle = StyleSheet.create({
     },
     PlusMinusButton: {
       alignSelf: 'center',
-      fontSize: normalize(20)
+      fontSize: normalize(15)
     },
     TextFont: {
-      fontSize: normalize(15),
+      fontSize: normalize(10),
       alignSelf: 'center'
     },
     ZahlenButton: {
@@ -49,7 +49,7 @@ export const AppStyle = StyleSheet.create({
     Anzahl: {
       alignSelf: 'center',
       justifyContent: 'space-around',
-      fontSize: normalize(20)
+      fontSize: normalize(15)
     },
     MiddleView: {
       justifyContent: "space-between",

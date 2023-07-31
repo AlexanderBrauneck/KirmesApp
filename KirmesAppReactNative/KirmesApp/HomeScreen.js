@@ -5,10 +5,11 @@ import { Feather, AntDesign } from '@expo/vector-icons';
 import { useState } from 'react';
 import CurrencyInput from 'react-native-currency-input';
 import { documentDirectory, EncodingType, readAsStringAsync, writeAsStringAsync } from 'expo-file-system';
-
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 export function HomeScreen({ navigation }) {
 
+  const [menuModalVisible, setMenuModalVisible] = useState(false);
   const [kirmesItems, setKirmesItems] = useState(KirmesItems);
   const [summe, setSumme] = useState(0);
   const [modalVisible, setModalVisible] = useState(false);
@@ -100,6 +101,10 @@ export function HomeScreen({ navigation }) {
     setModalVisible(!modalVisible);
   }
 
+  function onClose() {
+    setMenuModalVisible(!menuModalVisible);
+  }
+
   return (
     <View style = {AppStyle.container}>
 
@@ -111,7 +116,7 @@ export function HomeScreen({ navigation }) {
             justifyContent: 'center',
             alignItems: 'center',
             borderRadius: 20,
-            padding: 10,
+            padding: 5,
             width: '90%',
             height: 85 / kirmesItems.length + "%",
             backgroundColor: item.colorhex + "99"}}>
@@ -129,9 +134,11 @@ export function HomeScreen({ navigation }) {
                     {(item.price/100).toFixed(2) + " €"}
                   </Text>
                 </View>
-                <Text style={AppStyle.Anzahl}>
-                  {item.anzahl}
-                </Text>
+                <View style={AppStyle.AnzahlContainer}>
+                  <Text style={AppStyle.Anzahl}>
+                    {item.anzahl}
+                  </Text>
+                </View>
               </View>
               <TouchableOpacity style={AppStyle.PlusMinusButton} onPress={() => addItem(item)}>
                 <Feather name="plus-circle" size={AppStyle.PlusMinusButton.fontSize} color="black" />

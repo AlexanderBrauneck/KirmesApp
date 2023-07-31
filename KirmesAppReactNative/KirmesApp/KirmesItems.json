@@ -2,43 +2,30 @@
     "KirmesItems": [{
         "id" : 0,
         "name" : "Bier, Bräu, Radler",
-        "price" : 250,
+        "price" : 280,
         "colorhex" : "#FF1EE3",
         "anzahl" : 0
     },
     {
         "id" : 1,
-        "name" : "Glühwein",
+        "name" : "Wein und Schorle",
         "price" : 400,
         "colorhex" : "#FF7D23",
         "anzahl" : 0
     },
     {
         "id" : 2,
-        "name" : "Cola, Fanta, Wasser, Kinderpunsch",
-        "price" : 200,
+        "name" : "Cola, Fanta, Wasser",
+        "price" : 230,
         "colorhex" : "#2FBF8C",
         "anzahl" : 0
     },
     {
         "id" : 3,
-        "name" : "Würstchen",
-        "price" : 250,
+        "name" : "Kaffe und Kuchen",
+        "price" : 230,
         "colorhex" : "#D2B48C",
         "anzahl" : 0
-    },
-    {
-        "id" : 4,
-        "name" : "Döppekuchen",
-        "price" : 500,
-        "colorhex" : "#D2B48C",
-        "anzahl" : 0
-    },
-    {
-        "id" : 5,
-        "name" : "Apfelmuß",
-        "price" : 50,
-        "colorhex" : "#D2B48C",
-        "anzahl" : 0
-    }]
+    }
+]
 }

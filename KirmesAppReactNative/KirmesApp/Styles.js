@@ -1,6 +1,5 @@
 import { StyleSheet } from "react-native";
 import { normalize } from "./FontSizer";
-import { KirmesItems } from './KirmesItems.json';
 
 export const AppStyle = StyleSheet.create({
     container: {
@@ -11,6 +10,133 @@ export const AppStyle = StyleSheet.create({
       justifyContent: "space-around",
       height: '100%',
       width: '100%',
+    },
+    modalContainer: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: 'rgba(0, 0, 0, 0.5)', // Halbtransparenter Hintergrund
+    },
+    modalContent: {
+      backgroundColor: 'white',
+      padding: 20,
+      borderRadius: 10,
+      alignItems: 'center',
+    },
+    cancelButton: {
+      backgroundColor: 'gray',
+      padding: 10,
+      borderRadius: 5,
+      marginTop: 10,
+    },
+    cancelButtonText: {
+      color: 'white',
+      fontWeight: 'bold',
+    },
+    confirmButton: {
+      backgroundColor: 'green',
+      padding: 10,
+      borderRadius: 5,
+    },
+    confirmButtonText: {
+      color: 'white',
+      fontWeight: 'bold',
+    },
+    modalText: {
+      fontSize: 18,
+      marginBottom: 20,
+    },
+    button: {
+      backgroundColor: 'lightblue',
+      padding: 10,
+      marginBottom: 10,
+    },
+    buttonText: {
+      fontSize: 16,
+      fontWeight: 'bold',
+    },
+    modalContainer: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      padding: 20,
+    },
+    input: {
+      width: '100%',
+      height: 40,
+      borderWidth: 1,
+      borderColor: 'gray',
+      marginBottom: 20,
+      paddingHorizontal: 10,
+    },
+    saveButton: {
+      backgroundColor: 'green',
+      padding: 10,
+      borderRadius: 5,
+      marginBottom: 10,
+    },
+    saveButtonText: {
+      color: 'white',
+      fontWeight: 'bold',
+    },
+    cancelButton: {
+      backgroundColor: 'red',
+      padding: 50,
+      borderRadius: 5,
+    },
+    cancelButtonText: {
+      color: 'white',
+      fontWeight: 'bold',
+    },
+    deleteButton: {
+      alignSelf: 'center',
+    },
+    deleteButtonBackground: {
+      flexDirection: 'column',
+      backgroundColor: 'red',
+      borderRadius: 10,
+      padding: 8,
+      width: 80,
+      alignSelf: 'center'
+    },
+    menuButton: {
+      marginRight: 10,
+    },
+    overlay: {
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      alignItems: 'flex-end',
+      justifyContent: 'flex-start',
+    },
+    closeButton: {
+      position: 'absolute',
+      top: 10,
+      right: 10,
+    },
+    menu: {
+      backgroundColor: 'white',
+      borderRadius: 5,
+      marginTop: 70,
+      marginRight: 10,
+      padding: 10,
+      elevation: 4,
+    },
+    menuItem: {
+      padding: 10,
+      borderBottomWidth: 1,
+      borderBottomColor: 'lightgray',
+    },
+    overlayBackground: {
+      flex: 1,
+      backgroundColor: 'transparent',
+    },
+    HeaderView: {
+      height: 50,
+      width: 50,
+      backgroundColor: "#000000"
     },
     ItemViewOutline: {
       flexDirection: 'row',
@@ -23,6 +149,7 @@ export const AppStyle = StyleSheet.create({
     },
     NameAndPrice: {
         flexDirection: 'column',
+        flex: 1,
         alignSelf: 'center'
     },
     BottomBar: {
@@ -38,7 +165,7 @@ export const AppStyle = StyleSheet.create({
       fontSize: normalize(15)
     },
     TextFont: {
-      fontSize: normalize(10),
+      fontSize: normalize(12),
       alignSelf: 'center'
     },
     ZahlenButton: {
@@ -46,10 +173,14 @@ export const AppStyle = StyleSheet.create({
       backgroundColor: '#918DEE',
       width: '30%'
     },
-    Anzahl: {
+    AnzahlContainer: {
+      flexDirection: 'row',
       alignSelf: 'center',
-      justifyContent: 'space-around',
-      fontSize: normalize(15)
+      justifyContent: 'flex-end',
+      width: 29
+    },
+    Anzahl: {
+      fontSize: normalize(15),
     },
     MiddleView: {
       justifyContent: "space-between",

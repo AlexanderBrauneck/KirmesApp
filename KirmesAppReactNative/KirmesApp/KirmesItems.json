@@ -8,16 +8,16 @@
     },
     {
         "id" : 1,
-        "name" : "Wein und Schorle",
-        "price" : 400,
-        "colorhex" : "#FF7D23",
+        "name" : "Cola, Limo, Wasser",
+        "price" : 230,
+        "colorhex" : "#2FBF8C",
         "anzahl" : 0
     },
     {
         "id" : 2,
-        "name" : "Cola, Fanta, Wasser",
-        "price" : 230,
-        "colorhex" : "#2FBF8C",
+        "name" : "Wein und Schorle",
+        "price" : 480,
+        "colorhex" : "#FF7D23",
         "anzahl" : 0
     },
     {

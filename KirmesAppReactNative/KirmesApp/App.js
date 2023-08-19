@@ -38,9 +38,11 @@ const MenuOverlay = ({ closeMenu }) => {
         <TouchableOpacity onPress={goToSecondScreen} style={AppStyle.menuItem}>
           <Text>Umsätze ansehen</Text>
         </TouchableOpacity>
+        {/*
         <TouchableOpacity onPress={goToThirdScreen} style={AppStyle.menuItem}>
           <Text>Liste bearbeiten</Text>
         </TouchableOpacity>
+        */}
       </View>
       <TouchableOpacity onPress={closeMenu} style={AppStyle.overlayBackground} />
     </View>

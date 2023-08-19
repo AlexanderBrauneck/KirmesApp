@@ -5,7 +5,6 @@ import { Feather, AntDesign } from '@expo/vector-icons';
 import { useState } from 'react';
 import CurrencyInput from 'react-native-currency-input';
 import { documentDirectory, EncodingType, readAsStringAsync, writeAsStringAsync } from 'expo-file-system';
-import Ionicons from '@expo/vector-icons/Ionicons';
 
 export function HomeScreen({ navigation }) {
 
@@ -178,7 +177,7 @@ export function HomeScreen({ navigation }) {
                 <Text style={AppStyle.TextFont}>Fertig</Text>
               </TouchableOpacity>
               <TouchableOpacity
-                style={AppStyle.PlusMinusButton}
+                style={AppStyle.closeButton}
                 onPress={() => setModalVisible(!modalVisible)}>
                 <AntDesign name="close" size={AppStyle.PlusMinusButton.fontSize} color="black" />
               </TouchableOpacity>

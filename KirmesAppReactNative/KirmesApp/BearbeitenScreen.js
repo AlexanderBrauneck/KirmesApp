@@ -9,9 +9,9 @@ export function BearbeitenScreen({ navigation }) {
 
     const [kirmesItems, setKirmesItems] = useState(KirmesItems);
     const [modalVisible, setModalVisible] = useState(false);
-    const [itemName, setItemName] = useState();
-    const [itemPreis, setItemPreis] = useState();
-    const [itemId, setItemId] = useState();
+    const [itemName, setItemName] = useState("");
+    const [itemPreis, setItemPreis] = useState(0);
+    const [itemId, setItemId] = useState(-1);
 
     function toggleModal() {
         setModalVisible(!modalVisible);

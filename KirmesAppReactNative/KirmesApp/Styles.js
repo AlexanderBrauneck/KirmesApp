@@ -11,6 +11,46 @@ export const AppStyle = StyleSheet.create({
       height: '100%',
       width: '100%',
     },
+
+
+    MiddleView: {
+      justifyContent: "space-between",
+      flexDirection: 'row',
+      width: '75%'
+    },
+    NameAndPrice: {
+      flexDirection: 'column',
+      flex: 3,
+      alignSelf: 'center'
+    },
+    PlusMinusButton: {
+      justifyContent: 'center',
+      alignItems: 'center',
+      flexDirection: 'row',
+      flex: 1,
+      fontSize: normalize(20)
+    },
+    AnzahlContainer: {
+      flex: 1,
+      flexDirection: 'row',
+      alignSelf: 'center',
+      justifyContent: 'flex-end',
+      width: 29
+    },
+    Anzahl: {
+      fontSize: normalize(15),
+    },
+    ItemViewOutline: {
+      flexDirection: 'row',
+      borderWidth: 5,
+      borderRadius: 20,
+      justifyContent: 'space-between',
+      padding: 10,
+      width: '98%',
+      height: '95%'
+    },
+
+
     modalContainer: {
       flex: 1,
       justifyContent: 'center',
@@ -138,20 +178,6 @@ export const AppStyle = StyleSheet.create({
       width: 50,
       backgroundColor: "#000000"
     },
-    ItemViewOutline: {
-      flexDirection: 'row',
-      borderWidth: 5,
-      borderRadius: 20,
-      justifyContent: 'space-between',
-      padding: 10,
-      width: '98%',
-      height: '95%'
-    },
-    NameAndPrice: {
-        flexDirection: 'column',
-        flex: 1,
-        alignSelf: 'center'
-    },
     BottomBar: {
       flexDirection: 'row',
       alignSelf: 'center',
@@ -159,10 +185,6 @@ export const AppStyle = StyleSheet.create({
       width: '85%',
       alignItems: 'center',
       justifyContent: 'space-between'
-    },
-    PlusMinusButton: {
-      alignSelf: 'center',
-      fontSize: normalize(15)
     },
     TextFont: {
       fontSize: normalize(12),
@@ -172,20 +194,6 @@ export const AppStyle = StyleSheet.create({
       borderRadius: 5,
       backgroundColor: '#918DEE',
       width: '30%'
-    },
-    AnzahlContainer: {
-      flexDirection: 'row',
-      alignSelf: 'center',
-      justifyContent: 'flex-end',
-      width: 29
-    },
-    Anzahl: {
-      fontSize: normalize(15),
-    },
-    MiddleView: {
-      justifyContent: "space-between",
-      flexDirection: 'row',
-      width: '75%'
     },
     PopupViewContainer: {
       backgroundColor: '#F9DCBC',

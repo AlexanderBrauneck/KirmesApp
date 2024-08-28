@@ -3,6 +3,8 @@ import { useState } from 'react';
 import { AppStyle } from "./Styles";
 import { KirmesItems } from './KirmesItems.json';
 import { Ionicons } from '@expo/vector-icons';
+import CurrencyInput from 'react-native-currency-input';
+import { Snackbar } from 'react-native-paper';
 import ItemModal from './ItemModal';
 
 export function BearbeitenScreen({ navigation }) {
@@ -13,52 +15,29 @@ export function BearbeitenScreen({ navigation }) {
     const [itemPreis, setItemPreis] = useState(0);
     const [itemId, setItemId] = useState(-1);
 
-    function toggleModal() {
-        setModalVisible(!modalVisible);
-    }
+    const [snackVisible, setSnackVisible] = useState(false);
+    const [snackText, setSnackText] = useState('');
 
-    function delItem(id) {
-        //setKirmesItems(kirmesItems.filter(item => item.id != id));
-        //Alert.alert("Aufgabe gelöscht");
-        //closeDelModal();
-    }
-
-    function updateItem() {
-
-    }
-
-    function addItem() {
-        setItemId(kirmesItems.length);
-        if (itemName != "") {
-            //Item der Liste hinzufügen
-        } else {
-            setSnackVisible(true);
-            setSnackText("Das Item muss einen Namen haben");
-        }
+    function closeModal() {
+        setModalVisible(false);
     }
 
 // TODO: Color erweitern
 
-    function handleSaveButton() {
-        if(itemId == -1) {
-            addItem();
+    function deleteItem(id) {
+        
+    }
+
+    const handleSave = () => {
+        console.log('Gespeichert: ', itemId, itemName, itemPreis);
+        if (itemName != "") {
+            //Item der Liste hinzufügen
+            closeModal();
         } else {
-            updateItem();
+            setSnackVisible(true);
+            setSnackText("Das Item muss einen Namen haben");
         }
-        setModalVisible(false);
-        //console.log(kirmesItems);
-    }
-
-    function openModal(name, id, price) {
-        //setItemName(name);
-        //setItemId(id);
-        //setItemPreis(price);
-        toggleModal();
-    }
-
-    const renderItem = ({ item }) => {
-
-    }
+    };
 
     return (
         <View style = {AppStyle.container}>
@@ -66,7 +45,12 @@ export function BearbeitenScreen({ navigation }) {
 {/* ITEMVIEW */}
             {kirmesItems && kirmesItems.map((item, i) => (
                 <TouchableOpacity key={i} 
-                    onPress={openModal(item.name, item.id, item.price)}
+                    onPress={() => {
+                        setItemName(item.name);
+                        setItemId(item.id);
+                        setItemPreis(item.price);
+                        setModalVisible(true);
+                        }}
                     style={{
                         flexDirection: 'row',
                         justifyContent: "space-between",
@@ -87,7 +71,7 @@ export function BearbeitenScreen({ navigation }) {
                             {(item.price/100).toFixed(2) + " €"}
                         </Text>
                         </View>
-                        <TouchableOpacity onPress={updateItem} style={AppStyle.deleteButtonBackground}>
+                        <TouchableOpacity onPress={deleteItem(itemId)} style={AppStyle.deleteButtonBackground}>
                             <View style={AppStyle.deleteButton}>
                                 <Ionicons name="trash" size={24} color="black"/>
                             </View>
@@ -100,7 +84,12 @@ export function BearbeitenScreen({ navigation }) {
             <View style={AppStyle.BottomBar}>
                 <TouchableOpacity 
                     style={AppStyle.ZahlenButton}
-                    onPress={openModal("", -1, 0)}>
+                    onPress={() => {
+                        setItemName("");
+                        setItemId(0);
+                        setItemPreis(0);
+                        setModalVisible(true);
+                        }}>
                         <Text style={AppStyle.TextFont}>
                             Neues Item
                         </Text>
@@ -108,13 +97,42 @@ export function BearbeitenScreen({ navigation }) {
             </View>
 
 {/* POPUPVIEW */}
-            <ItemModal 
-                isVisible={modalVisible} 
-                onClose={toggleModal} 
-                name={itemName}
-                id={itemId}
-                price={itemPreis}
+            <Modal animationType="slide"
+            visible={modalVisible}>
+            <TouchableOpacity onPress={closeModal} style={AppStyle.closeButton}>
+                <Ionicons name="close" size={24} color="black" />
+            </TouchableOpacity>
+            <View style={AppStyle.modalContainer}>
+                <TextInput
+                    style={AppStyle.input}
+                    value={itemName}
+                    onChangeText={setItemName}
+                    autoFocus={true}
+                />
+                <View style={AppStyle.CurrencyInput}>
+                    <CurrencyInput 
+                        style={AppStyle.TextFont}
+                        placeholder="0.00 €"
+                        value={itemPreis}
+                        onChangeValue={setItemPreis}
+                        suffix=" €"
+                        separator='.'
+                        precision={2}/>
+                </View>
+                <TouchableOpacity onPress={handleSave} style={AppStyle.saveButton}>
+                    <Text style={AppStyle.saveButtonText}>Speichern</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={closeModal} style={AppStyle.cancelButton}>
+                    <Text style={AppStyle.cancelButtonText}>Abbrechen</Text>
+                </TouchableOpacity>
+            </View>
+            <Snackbar
+                visible={snackVisible} 
+                onDismiss={() => setSnackVisible(false)}
+                duration={5000}
+                children={snackText}
             />
+        </Modal>
         </View>
     );
 }

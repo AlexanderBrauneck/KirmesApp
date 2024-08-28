@@ -1,6 +1,6 @@
 import { Text, View, TouchableOpacity, Modal, Alert } from 'react-native';
 import { KirmesItems } from './KirmesItems.json';
-import { AppStyle } from './Styles.js';
+import { AppStyle, ItemViewStyle } from './Styles.js';
 import { Feather, AntDesign } from '@expo/vector-icons'; 
 import { useState } from 'react';
 import CurrencyInput from 'react-native-currency-input';
@@ -104,6 +104,15 @@ export function HomeScreen({ navigation }) {
     setMenuModalVisible(!menuModalVisible);
   }
 
+  function reset() {
+    var newArray = kirmesItems;
+    for (let i = 0; i < newArray.length; i++) {
+      newArray[i].anzahl = 0;
+    }
+    setKirmesItems(newArray);
+    setSumme(summeBerechnen());
+  }
+
   return (
     <View style = {AppStyle.container}>
 
@@ -120,27 +129,27 @@ export function HomeScreen({ navigation }) {
             height: 85 / kirmesItems.length + "%",
             backgroundColor: item.colorhex + "99"}}>
 
-            <View style={AppStyle.ItemViewOutline}>
-              <TouchableOpacity style={AppStyle.PlusMinusButton} onPress={() => removeItem(item)}>
-                <Feather name="minus-circle" size={AppStyle.PlusMinusButton.fontSize} color="black" />
+            <View style={ItemViewStyle.ItemViewOutline}>
+              <TouchableOpacity style={ItemViewStyle.PlusMinusButton} onPress={() => removeItem(item)}>
+                <Feather name="minus-circle" size={ItemViewStyle.PlusMinusButton.fontSize} color="black" />
               </TouchableOpacity>
-              <View style={AppStyle.MiddleView}>
-                <View style={AppStyle.NameAndPrice}>
-                  <Text style={AppStyle.TextFont}>
+              <View style={ItemViewStyle.MiddleView}>
+                <View style={ItemViewStyle.NameAndPrice}>
+                  <Text style={ItemViewStyle.TextFont}>
                     {item.name}
                   </Text>
-                  <Text style={AppStyle.TextFont}>
+                  <Text style={ItemViewStyle.TextFont}>
                     {(item.price/100).toFixed(2) + " €"}
                   </Text>
                 </View>
-                <View style={AppStyle.AnzahlContainer}>
-                  <Text style={AppStyle.Anzahl}>
+                <View style={ItemViewStyle.AnzahlContainer}>
+                  <Text style={ItemViewStyle.AnzahlFont}>
                     {item.anzahl}
                   </Text>
                 </View>
               </View>
-              <TouchableOpacity style={AppStyle.PlusMinusButton} onPress={() => addItem(item)}>
-                <Feather name="plus-circle" size={AppStyle.PlusMinusButton.fontSize} color="black" />
+              <TouchableOpacity style={ItemViewStyle.PlusMinusButton} onPress={() => addItem(item)}>
+                <Feather name="plus-circle" size={ItemViewStyle.PlusMinusButton.fontSize} color="black" />
               </TouchableOpacity>
               
             </View>
@@ -149,9 +158,16 @@ export function HomeScreen({ navigation }) {
 
 {/* BOTTOMBARVIEW */}
       <View style={AppStyle.BottomBar}>
-        <Text style={AppStyle.TextFont}>
-          { "Summe: " + (summe/100).toFixed(2) + " €"}
-        </Text>
+        <View style={AppStyle.SummeView}>
+          <Text style={AppStyle.TextFont}>
+            { "Summe: " + (summe/100).toFixed(2) + " €"}
+          </Text>
+        </View>
+        <TouchableOpacity style={AppStyle.ZahlenButton} onPress={() => reset()}>
+          <Text style={AppStyle.TextFont}>
+            Reset
+          </Text>
+        </TouchableOpacity>
         <TouchableOpacity style={AppStyle.ZahlenButton} onPress={() => setModalVisible(true)}>
           <Text style={AppStyle.TextFont}>
             Zahlen
@@ -179,7 +195,7 @@ export function HomeScreen({ navigation }) {
               <TouchableOpacity
                 style={AppStyle.closeButton}
                 onPress={() => setModalVisible(!modalVisible)}>
-                <AntDesign name="close" size={AppStyle.PlusMinusButton.fontSize} color="black" />
+                <AntDesign name="close" size={ItemViewStyle.PlusMinusButton.fontSize} color="black" />
               </TouchableOpacity>
             </View>
             <View style={AppStyle.Rückgeld}>

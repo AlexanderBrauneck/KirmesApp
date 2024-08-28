@@ -26,6 +26,13 @@
         "price" : 230,
         "colorhex" : "#D2B48C",
         "anzahl" : 0
+    },
+    {
+        "id" : 4,
+        "name" : "Pfand",
+        "price" : 200,
+        "colorhex" : "#FF0000",
+        "anzahl" : 0
     }
 ]
 }

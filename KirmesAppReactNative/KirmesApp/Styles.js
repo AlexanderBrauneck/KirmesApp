@@ -1,6 +1,50 @@
 import { StyleSheet } from "react-native";
 import { normalize } from "./FontSizer";
 
+export const ItemViewStyle = StyleSheet.create({
+  ItemViewOutline: {
+    flexDirection: 'row',
+    borderWidth: 5,
+    borderRadius: 20,
+    justifyContent: 'space-between',
+    padding: 10,
+    width: '98%',
+    height: '95%'
+  },
+  PlusMinusButton: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
+    flex: 1,
+    fontSize: normalize(20)
+  },
+  MiddleView: {
+    justifyContent: "space-between",
+    flexDirection: 'row',
+    width: '70%'
+  },
+  NameAndPrice: {
+    flexDirection: 'column',
+    flex: 3,
+    alignSelf: 'center'
+  },
+  TextFont: {
+    fontSize: normalize(13),
+    alignSelf: 'center'
+  },
+  AnzahlContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    alignSelf: 'center',
+    justifyContent: 'flex-end',
+    width: 29
+  },
+  AnzahlFont: {
+    fontSize: normalize(17),
+  },
+})
+
+
 export const AppStyle = StyleSheet.create({
     container: {
       flex: 1,
@@ -11,46 +55,6 @@ export const AppStyle = StyleSheet.create({
       height: '100%',
       width: '100%',
     },
-
-
-    MiddleView: {
-      justifyContent: "space-between",
-      flexDirection: 'row',
-      width: '75%'
-    },
-    NameAndPrice: {
-      flexDirection: 'column',
-      flex: 3,
-      alignSelf: 'center'
-    },
-    PlusMinusButton: {
-      justifyContent: 'center',
-      alignItems: 'center',
-      flexDirection: 'row',
-      flex: 1,
-      fontSize: normalize(20)
-    },
-    AnzahlContainer: {
-      flex: 1,
-      flexDirection: 'row',
-      alignSelf: 'center',
-      justifyContent: 'flex-end',
-      width: 29
-    },
-    Anzahl: {
-      fontSize: normalize(15),
-    },
-    ItemViewOutline: {
-      flexDirection: 'row',
-      borderWidth: 5,
-      borderRadius: 20,
-      justifyContent: 'space-between',
-      padding: 10,
-      width: '98%',
-      height: '95%'
-    },
-
-
     modalContainer: {
       flex: 1,
       justifyContent: 'center',
@@ -187,13 +191,21 @@ export const AppStyle = StyleSheet.create({
       justifyContent: 'space-between'
     },
     TextFont: {
-      fontSize: normalize(12),
+      fontSize: normalize(13),
       alignSelf: 'center'
     },
     ZahlenButton: {
-      borderRadius: 5,
+      borderRadius: 10,
+      flex: 0.3,
+      height: "70%",
       backgroundColor: '#918DEE',
-      width: '30%'
+      justifyContent: 'center'
+    },
+    SummeView: {
+      borderRadius: 10,
+      flex: 0.37,
+      height: "70%",
+      justifyContent: 'center'
     },
     PopupViewContainer: {
       backgroundColor: '#F9DCBC',
@@ -240,4 +252,8 @@ export const AppStyle = StyleSheet.create({
       alignSelf: 'center'
     }
   });
+
+export const ZahlenModalStyle = StyleSheet.create ({
+
+});
   

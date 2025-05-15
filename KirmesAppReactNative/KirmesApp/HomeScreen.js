@@ -1,18 +1,38 @@
 import { Text, View, TouchableOpacity, Modal, Alert } from 'react-native';
 import { KirmesItems } from './KirmesItems.json';
-import { AppStyle, ItemViewStyle } from './Styles.js';
+import { AppStyle, ItemViewStyle, ModalStyle } from './Styles.js';
 import { Feather, AntDesign } from '@expo/vector-icons'; 
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import CurrencyInput from 'react-native-currency-input';
-import { documentDirectory, EncodingType, readAsStringAsync, writeAsStringAsync } from 'expo-file-system';
+import { documentDirectory, EncodingType, readAsStringAsync, writeAsStringAsync, getInfoAsync } from 'expo-file-system';
+import { useFocusEffect } from '@react-navigation/native';
 
 export function HomeScreen({ navigation }) {
 
-  const [menuModalVisible, setMenuModalVisible] = useState(false);
   const [kirmesItems, setKirmesItems] = useState(KirmesItems);
   const [summe, setSumme] = useState(0);
   const [modalVisible, setModalVisible] = useState(false);
   const [gegeben, setGegeben] = useState();
+
+  const fileUri2 = documentDirectory + 'KirmesItemsNew.json';
+
+  useFocusEffect(
+    useCallback(() => {
+      const loadPersistedData = async () => {
+        try {
+          const fileInfo = await getInfoAsync(fileUri2);
+          if (fileInfo.exists) {
+            const jsonString = await readAsStringAsync(fileUri2);
+            const savedItems = JSON.parse(jsonString);
+            setKirmesItems(savedItems);
+          }
+        } catch (error) {
+          console.error('Fehler beim Laden der persistierten Daten:', error);
+        }
+      };
+      loadPersistedData();
+      }, [])
+  );
 
   function addItem(item) {
     var newArray = [];
@@ -69,7 +89,6 @@ export function HomeScreen({ navigation }) {
   async function addcounters(item) {
     try {
       var counter = 0;
-      let fileUri = documentDirectory + item.name;
       console.log(item.name);
       console.log(item.anzahl);
       if (item.anzahl > 0) {
@@ -98,10 +117,6 @@ export function HomeScreen({ navigation }) {
     setSumme(0);
     setGegeben();
     setModalVisible(!modalVisible);
-  }
-
-  function onClose() {
-    setMenuModalVisible(!menuModalVisible);
   }
 
   function reset() {
@@ -184,23 +199,23 @@ export function HomeScreen({ navigation }) {
           Alert.alert('Modal has been closed.');
           setModalVisible(!modalVisible);
         }}>
-        <View style={AppStyle.PopupViewContainer}>
-          <View style={AppStyle.NumpadFixView}>
-            <View style={AppStyle.FertigUndSchließen}>
+        <View style={ModalStyle.PopupViewContainer}>
+          <View style={ModalStyle.NumpadFixView}>
+            <View style={ModalStyle.FertigUndSchließen}>
               <TouchableOpacity 
                 style={AppStyle.TextFont}
                 onPress={zahlen}>
                 <Text style={AppStyle.TextFont}>Fertig</Text>
               </TouchableOpacity>
               <TouchableOpacity
-                style={AppStyle.closeButton}
+                style={ModalStyle.closeButton}
                 onPress={() => setModalVisible(!modalVisible)}>
                 <AntDesign name="close" size={ItemViewStyle.PlusMinusButton.fontSize} color="black" />
               </TouchableOpacity>
             </View>
-            <View style={AppStyle.Rückgeld}>
+            <View style={ModalStyle.TextUndEingabe}>
               <Text style={AppStyle.TextFont}>Gegeben: </Text>
-              <View style={AppStyle.CurrencyInput}>
+              <View style={ModalStyle.CurrencyInput}>
                 <CurrencyInput 
                   style={AppStyle.TextFont}
                   placeholder="0.00 €"
@@ -212,7 +227,7 @@ export function HomeScreen({ navigation }) {
                   autoFocus={true}/>
               </View>
             </View>
-            <View style={AppStyle.Rückgeld}>
+            <View style={ModalStyle.TextUndEingabe}>
               <Text style={AppStyle.TextFont}>Rückgeld: </Text>
               <Text style={AppStyle.TextFont}>{(gegeben - (summe/100)).toFixed(2) + " €"}</Text>  
             </View>

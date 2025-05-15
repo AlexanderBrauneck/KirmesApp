@@ -3,7 +3,7 @@ import { UmsatzScreen } from "./UmsatzScreen";
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { BearbeitenScreen } from "./BearbeitenScreen";
-import { TouchableOpacity, View, Text, Modal } from "react-native";
+import { TouchableOpacity, View, Text } from "react-native";
 import { Ionicons } from '@expo/vector-icons';
 import { useState } from "react";
 import { AppStyle } from "./Styles";
@@ -38,11 +38,11 @@ const MenuOverlay = ({ closeMenu }) => {
         <TouchableOpacity onPress={goToSecondScreen} style={AppStyle.menuItem}>
           <Text>Umsätze ansehen</Text>
         </TouchableOpacity>
-        {/* 
+        {/* */}
         <TouchableOpacity onPress={goToThirdScreen} style={AppStyle.menuItem}>
           <Text>Liste bearbeiten</Text>
         </TouchableOpacity>
-        */}
+        
       </View>
       <TouchableOpacity onPress={closeMenu} style={AppStyle.overlayBackground} />
     </View>
